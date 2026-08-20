@@ -28,8 +28,8 @@ ReachInbox is a full stack email scheduling system that:
 
 ### Backend Features
 
-| Feature | Status | Implementation |
-|---------|--------|----------------|
+| Feature | Implementation |
+|---------|----------------|
 | Email Scheduling API | `/app/api/emails/route.ts` |
 | BullMQ + Redis Queue | `/lib/worker/email-worker.ts` |
 | MySQL Database       | `/lib/db/schema.ts` |
@@ -44,8 +44,8 @@ ReachInbox is a full stack email scheduling system that:
 
 ### Frontend Features
 
-| Feature | Status | Implementation |
-|---------|--------|----------------|
+| Feature | Implementation |
+|---------|----------------|
 | Google OAuth Login | `/app/api/auth/google/` |
 | User Profile Display | Dashboard sidebar |
 | Logout  | Sidebar logout button |
@@ -64,6 +64,8 @@ ReachInbox is a full stack email scheduling system that:
 ##  Architecture Overview
 
 ### System Architecture
+
+```bash
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │ │
@@ -96,10 +98,11 @@ ReachInbox is a full stack email scheduling system that:
 │ └─────────────────┘ └─────────────────┘ │
 │ │
 └─────────────────────────────────────────────────────────────────────────────┘
-
+```
 ---
 
 ### How Scheduling Works
+```bash
 User schedules email via UI
 ↓
 
@@ -119,10 +122,11 @@ If allowed → Email sent via Ethereal
 ↓
 
 Status updated in MySQL → "sent"
-
+```
 ---
 
 ### Persistence on Restart
+```bash
 Server restarts
 ↓
 
@@ -139,7 +143,7 @@ Re-adds them to BullMQ queue
 ↓
 
 Jobs sent at correct times 
-
+```
 ---
 
 ### Rate Limiting & Concurrency
@@ -248,24 +252,27 @@ Frontend:   http://localhost:3000
 
 ## Environment Variables Reference
 
-Variable             	Description	                Default
-DATABASE_URL           	MySQL connection string     	-
-AUTH_SECRET            	Session encryption key	        -
-GOOGLE_CLIENT_ID	    Google OAuth Client ID	        -
-GOOGLE_CLIENT_SECRET	Google OAuth Client Secret  	-
-GOOGLE_REDIRECT_URI	    OAuth callback URL              http://localhost:3000/api/auth/google/callback
-REDIS_URL	            Redis connection string	        redis://127.0.0.1:6379
-WORKER_CONCURRENCY    	Number of parallel workers	    5
-HOURLY_LIMIT        	Max emails per hour (global)	100
-SMTP_HOST	            SMTP server host	            smtp.ethereal.email
-SMTP_PORT	            SMTP port	                    587
-SMTP_USER	            SMTP username                  	-
-SMTP_PASSWORD	        SMTP password                 	-
-SMTP_FROM	            Sender email address	        ReachInbox <no-reply@example.com>
+| Variable          |   Description	               |  Default |
+|-------------------|------------------------------|----------|
+| DATABASE_URL      |    	MySQL connection string |    -    |
+| AUTH_SECRET       |    	Session encryption key	|    -    |
+| GOOGLE_CLIENT_ID	|    Google OAuth Client ID	    |    -    |
+| GOOGLE_CLIENT_SECRET	|Google OAuth Client Secret | 	 -    |
+| GOOGLE_REDIRECT_URI	 |   OAuth callback URL     |http://localhost:3000/api/auth/google/callback |
+| REDIS_URL	         |   Redis connection string	| redis://127.0.0.1:6379 |
+| WORKER_CONCURRENCY |  	Number of parallel workers	|  5  |
+| HOURLY_LIMIT       | 	Max emails per hour (global) |	  100 | 
+| SMTP_HOST	         |  SMTP server host	         |   smtp.ethereal.email |
+| SMTP_PORT	         |   SMTP port	                 |   587  |
+| SMTP_USER	         |   SMTP username               |   	- |
+| SMTP_PASSWORD	     |   SMTP password               |  	- | 
+| SMTP_FROM	         |   Sender email address	     |   ReachInbox <no-reply@example.com> |
 
 ---
 
 ## Project Structure
+
+```bash
 
 reachinbox/
 ├── app/
@@ -303,7 +310,7 @@ reachinbox/
 ├── docker-compose.yml                # MySQL + Redis
 ├── package.json
 └── README.md
-
+```
 ---
 
 ## Testing
@@ -331,13 +338,14 @@ reachinbox/
 ```
 #### API Endpoints
 
-Method	      Endpoint	      Description
-GET	         /api/emails	 List all emails
-POST    	/api/emails	     Schedule new email
-PATCH   	/api/emails/[id] Update job status
-GET	        /api/auth/google Initiate Google login
-GET	        /api/auth/google/callback	OAuth callback
-POST     	/api/auth/signout	       Logout
+|Method	  |    Endpoint	   |   Description |
+|---------|----------------|---------------|
+|GET	  |  /api/emails   | List all emails|
+|POST     |	/api/emails	   |  Schedule new email|
+|PATCH    | /api/emails/[id]| Update job status|
+|GET	  | /api/auth/google| Initiate Google login|
+|GET	  | /api/auth/google/callback |	OAuth callback|
+|POST     |	/api/auth/signout	     |  Logout|
 
 ##  Tech Stack
 #### Backend
@@ -364,6 +372,6 @@ Icons: Lucide React
 ---
 
 ### Author
-Sujeet M A
-sujeetmalagundi999@gmail.com
+- Sujeet M A
+- sujeetmalagundi999@gmail.com
 ---
