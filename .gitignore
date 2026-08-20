@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+package-lock.json
+pnpm-lock.yaml
+
+# Environment Variables
+.env
+.env*.local
+
+# Next.js Build
+.next/
+out/
+dist/
+.vercel/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
