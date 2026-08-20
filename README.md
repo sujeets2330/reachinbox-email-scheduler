@@ -354,11 +354,14 @@ Framework: Next.js 16 (App Router)
 Language: TypeScript
 
 Queue: BullMQ (backed by Redis)
+
 Database: MySQL (Drizzle ORM)
+
 Email: Ethereal (nodemailer)
+
 Auth: Google OAuth 2.0
 
---- 
+---
 
 #### Frontend
 Framework: React 19 + Next.js
