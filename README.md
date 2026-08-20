@@ -186,7 +186,7 @@ env
 # =============================================
 # DATABASE
 # =============================================
-DATABASE_URL=mysql://root:root123@127.0.0.1:3306/reachinbox
+DATABASE_URL=mysql://root:yourpassowrd@127.0.0.1:3306/reachinbox or url
 
 # =============================================
 # AUTHENTICATION (Google OAuth)
