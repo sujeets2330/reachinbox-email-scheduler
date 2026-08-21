@@ -6,7 +6,7 @@ import * as schema from './schema'
 const globalForDb = globalThis as unknown as { pool?: mysql.Pool }
 
 export const pool = globalForDb.pool ?? mysql.createPool({
-  uri: process.env.DATABASE_URL || 'mysql://root:password@127.0.0.1:3306/reachinbox',
+  uri: process.env.DATABASE_URL,
   connectionLimit: 10,
   // Add these for better connection handling
   enableKeepAlive: true,
