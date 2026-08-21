@@ -144,7 +144,7 @@ export async function signOut() {
 export function googleAuthUrl(state: string) {
   const params = new URLSearchParams({
     client_id: process.env.GOOGLE_CLIENT_ID || '',
-    redirect_uri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:3000/api/auth/google/callback',
+    redirect_uri: process.env.GOOGLE_REDIRECT_URI || 'https://reachinbox-email-scheduler-production-a718.up.railway.app/api/auth/google/callback',
     response_type: 'code',
     scope: 'openid email profile',
     state,
