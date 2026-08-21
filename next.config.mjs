@@ -6,6 +6,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // This is the CRITICAL missing piece for Railway
+  experimental: {
+    trustHostHeader: true,
+  },
 }
 
 export default nextConfig
